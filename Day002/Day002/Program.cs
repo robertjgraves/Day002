@@ -6,32 +6,49 @@ using System.Threading.Tasks;
 
 namespace Day002
 {
+    
+
     class Program
     {
+
+        
+    
+
         static void Main(string[] args)
         {
+            DateTime today = DateTime.Now;
+            
             Console.WriteLine("Enter your birthday (mm/dd/yyyy format)");
             string input = Console.ReadLine();
             DateTime myBirthday = DateTime.Parse(input);
 
             Console.WriteLine("Your birthday is {0:d}", myBirthday);
 
-            DateTime today = DateTime.Now;
+            Console.WriteLine("Today is {0:d}", today);       
 
-            Console.WriteLine("Today is {0:d}", today);
-            TimeSpan daysOld = today - myBirthday;
+            Console.WriteLine("You are {0} days old!", calculateDaysOld(today, myBirthday));
 
-            Console.WriteLine("You are {0} days old!", daysOld.Days);
+            Console.WriteLine("You are {0} years old!", calculateAge(today, myBirthday));           
 
-            int years = today.Year - myBirthday.Year;
-            if (myBirthday > today.AddYears(-years))
+            Console.ReadLine();
+        }
+
+        static int calculateDaysOld(DateTime today, DateTime birthday)
+        {
+            TimeSpan daysOld = today - birthday;
+            return daysOld.Days;
+        }
+
+        static int calculateAge(DateTime today, DateTime birthday)
+        {
+            int years = today.Year - birthday.Year;
+            
+            if (birthday > today.AddYears(-years))
             {
                 years = years - 1;
             }
 
-            Console.WriteLine("You are {0} years old!", years);           
-
-            Console.ReadLine();
+            return years;
         }
     }
 }
