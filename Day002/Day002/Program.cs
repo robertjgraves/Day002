@@ -26,7 +26,7 @@ namespace Day002
 
             Console.WriteLine("Today is {0:d}", today);       
 
-            Console.WriteLine("You are {0} days old!", calculateDaysOld(today, myBirthday));
+            Console.WriteLine("You are {0:N} days old!", calculateDaysOld(today, myBirthday));
 
             Console.WriteLine("You are {0} years old!", calculateAge(today, myBirthday));           
 
